@@ -1,11 +1,14 @@
 version: "3.9"
 
+volumes:
+  pg-data:
+
 services:
   postgres:
     image: postgres
     container_name: trafilea_db
     volumes:
-      - ./dockervolumes/postgresql:/var/lib/postgresql/data
+      - pg-data:/pg-data
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -18,16 +21,15 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - ./dockervolumes/redis:/data
+      - pg-data:/pg-data
 
   web:
     build:
       context: .
     env_file:
       - env_docker
-    command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - pg-data:/pg-data
     ports:
       - "8000:8000"
     depends_on:
