@@ -154,5 +154,6 @@ Thumbs.db
 # profiling data
 .prof
 
+.env
 env_docker
 .vscode
