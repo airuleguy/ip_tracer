@@ -2,11 +2,6 @@
 
 ## Ip Tracer
 
-"""
-I only have 1000 api calls per month so I should
-schedule this every 2 hours to update
-"""
-Money symbols are not available in the currency API so I used a json.
 
 This is an ip that parses ip address and returns interesting data about it, it was made with:
 
